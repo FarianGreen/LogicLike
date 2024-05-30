@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CoursesList from "./components/CoursesList";
+import Filter from "./components/Filter";
+import "./styles/App.scss";
 
-function App() {
+const App: React.FC = () => {
+  const [tags, setTags] = useState<string[]>([]);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  useEffect(() => {
+    axios
+      .get("https://logiclike.com/docs/courses.json")
+      .then((response) => {
+        const allTags = new Set<string>();
+        response.data.forEach((course: any) => {
+          course.tags.forEach((tag: string) => allTags.add(tag));
+        });
+        setTags(Array.from(allTags));
+      })
+      .catch((error) => {
+        console.error("Error fetching tags:", error);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="filter-container">
+        <Filter
+          tags={tags}
+          selectedTag={selectedTag}
+          onTagSelect={setSelectedTag}
+        />
+      </div>
+      <div className="courses-container">
+        <CoursesList selectedTag={selectedTag} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

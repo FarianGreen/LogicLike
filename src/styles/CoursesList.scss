@@ -1,0 +1,22 @@
+.courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.course-card {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  max-width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 3px 1px 4px 2px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 768px){
+  .course-card {
+    flex-basis: auto;
+    max-width: 100%;
+  }
+}

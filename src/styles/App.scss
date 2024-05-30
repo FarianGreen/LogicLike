@@ -1,0 +1,32 @@
+.app {
+  display: flex;
+  padding: 20px;
+}
+
+.filter-container {
+  flex: 0 0 250px;
+  margin-right: 20px;
+}
+
+.courses-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .filter-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .courses-container {
+    width: 100%;
+  }
+}

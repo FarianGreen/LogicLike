@@ -1,0 +1,28 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  background-color: #cfcfe4;
+  border: 1px solid #cfcfe4;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  color: #39414b;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+  font-family: "Nunito";
+  font-size: 18px;
+}
+
+.filter-button.selected {
+  background: #5fbf77;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+}
